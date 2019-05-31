@@ -1,0 +1,5 @@
+services:
+    _defaults:
+        public: true
+
+    test.Automattic\WooCommerce\Client: '@Automattic\WooCommerce\Client'

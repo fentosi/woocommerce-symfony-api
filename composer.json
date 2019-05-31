@@ -5,6 +5,8 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "automattic/woocommerce": "^3.0",
+        "symfony/browser-kit": "4.3.*",
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.3.*",
@@ -56,6 +58,7 @@
         }
     },
     "require-dev": {
+        "symfony/phpunit-bridge": "4.3.*",
         "symfony/web-server-bundle": "4.3.*"
     }
 }

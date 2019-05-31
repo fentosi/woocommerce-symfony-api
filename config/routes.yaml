@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+api_method:
+    path: /api/{method}
+    controller: App\Controller\ApiController::index
+
+api_method_id:
+    path: /api/{method}/{id}
+    controller: App\Controller\ApiController::index
