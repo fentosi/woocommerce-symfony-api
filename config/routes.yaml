@@ -5,3 +5,7 @@ api_method:
 api_method_id:
     path: /api/{method}/{id}
     controller: App\Controller\ApiController::index
+
+index:
+    path: /
+    controller: App\Controller\IndexController::index
