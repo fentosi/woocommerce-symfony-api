@@ -14,11 +14,17 @@ class ApiController
 
         try {
             $json = $wooCommerce->get($path);
-            return new JsonResponse($json);
+
+            $response = new JsonResponse($json);
+            $response->headers->set('Access-Control-Allow-Origin', $_ENV['API_ACCESS_CONTROL_ALLOW_ORIGIN']);
+
+            return $response;
         } catch(\Exception $e) {
-            $json = $e->getMessage();
-            $code = $e->getResponse()->getCode();
-            return new Response($json, $code);
+            if ($e instanceof \Exception) {
+                $json = $e->getMessage();
+                $code = $e->getResponse()->getCode();
+                return new Response($json, $code);
+            }
         }
     }
 }
