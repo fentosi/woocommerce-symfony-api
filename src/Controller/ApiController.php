@@ -20,11 +20,9 @@ class ApiController
 
             return $response;
         } catch(\Exception $e) {
-            if ($e instanceof \Exception) {
-                $json = $e->getMessage();
-                $code = $e->getResponse()->getCode();
-                return new Response($json, $code);
-            }
+            $json = $e->getMessage();
+            $code = $e->getResponse()->getCode();
+            return new Response($json, $code);
         }
     }
 }
