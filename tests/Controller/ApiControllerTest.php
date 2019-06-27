@@ -2,12 +2,17 @@
 namespace App\Tests\Controller;
 
 use Automattic\WooCommerce\Client;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ApiTest extends WebTestCase
 {
 
-    private $httpClient;
+
+    /**
+     * @var KernelBrowser
+     */
+    private  $httpClient;
 
     protected function setUp() {
         parent::setUp();
@@ -25,7 +30,7 @@ class ApiTest extends WebTestCase
         $this->assertEquals(200, $this->httpClient->getResponse()->getStatusCode());
     }
 
-    public function testIndex_returnsGivenSlug()
+    public function testIndex_callsWooCommerceAPI_withGivenPath()
     {
 
         $this->createWooCommerceClientMock()
@@ -34,6 +39,17 @@ class ApiTest extends WebTestCase
             ->with("slug", []);
 
         $this->httpClient->request('GET', '/api/slug');
+    }
+
+    public function testIndex_callsWooCommerceAPI_withGivenPathAndParameters()
+    {
+
+        $this->createWooCommerceClientMock()
+            ->expects($this->once())
+            ->method('get')
+            ->with("slug", ['asd' => 123]);
+
+        $this->httpClient->request('GET', '/api/slug?asd=123');
     }
 
     private function createWooCommerceClientMock()

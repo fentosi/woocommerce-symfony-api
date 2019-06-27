@@ -3,17 +3,23 @@ namespace App\Controller;
 
 use Automattic\WooCommerce\Client;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
 class ApiController
 {
-    public function index($method, $id = null, Client $wooCommerce)
+    public function index($method, $id = null, Request $request, Client $wooCommerce)
     {
         $path = $method . (!empty($id) ? "/" . $id : "");
 
         try {
-            $json = $wooCommerce->get($path);
+            $parameters = [];
+            foreach ($request->query->keys() as $key) {
+                $parameters[$key] = $request->query->get($key);
+            }
+
+            $json = $wooCommerce->get($path, $parameters);
 
             $response = new JsonResponse($json);
             $response->headers->set('Access-Control-Allow-Origin', $_ENV['API_ACCESS_CONTROL_ALLOW_ORIGIN']);
