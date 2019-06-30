@@ -23,6 +23,7 @@ class ApiController
 
             $response = new JsonResponse($json);
             $response->headers->set('Access-Control-Allow-Origin', $_ENV['API_ACCESS_CONTROL_ALLOW_ORIGIN']);
+            $response->headers->set('Access-Control-Allow-Headers', $_ENV['API_ACCESS_CONTROL_ALLOW_HEADERS']);
 
             return $response;
         } catch(\Exception $e) {
