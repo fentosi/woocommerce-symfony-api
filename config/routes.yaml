@@ -1,10 +1,17 @@
-api_method:
+api_method_get:
     path: /api/{method}
-    controller: App\Controller\ApiController::index
+    controller: App\Controller\ApiController::get
+    methods: [GET, OPTION]
+
+api_method_post:
+    path: /api/{method}
+    controller: App\Controller\ApiController::post
+    methods: [POST, OPTION]
 
 api_method_id:
     path: /api/{method}/{id}
-    controller: App\Controller\ApiController::index
+    controller: App\Controller\ApiController::get
+    methods: [GET, OPTION]
 
 index:
     path: /
