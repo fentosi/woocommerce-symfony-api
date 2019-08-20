@@ -41,6 +41,17 @@ class ApiTest extends WebTestCase
         $this->httpClient->request('GET', '/api/slug');
     }
 
+    public function testIndex_callsWooCommerceAPI_withGivenMethodAndSubmethod()
+    {
+
+        $this->createWooCommerceClientMock()
+            ->expects($this->once())
+            ->method('get')
+            ->with("products/12/variations", []);
+
+        $this->httpClient->request('GET', '/api/products/12/variations');
+    }
+
     public function testIndex_callsWooCommerceAPI_withGivenPathAndParameters()
     {
 

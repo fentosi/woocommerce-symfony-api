@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApiController
 {
-    public function get($method, $id = null, Request $request, Client $wooCommerce)
+    public function get($method, $id = null, $submethod = null, Request $request, Client $wooCommerce)
     {
-        $path = $this->generatePath($method, $id);
+        $path = $this->generatePath($method, $id, $submethod);
 
         try {
             $wooCommerceParameters = $this->createParameterBag($request->query);
@@ -62,8 +62,8 @@ class ApiController
         return $response;
     }
 
-    public function generatePath($method, $id): string
+    public function generatePath($method, $id, $submethod): string
     {
-        return $method . (!empty($id) ? "/" . $id : "");
+        return $method . (!empty($id) ? "/" . $id : "") . (!empty($submethod) ? "/" . $submethod : "");
     }
 }

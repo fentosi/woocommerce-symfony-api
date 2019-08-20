@@ -13,6 +13,11 @@ api_method_id:
     controller: App\Controller\ApiController::get
     methods: [GET, OPTION]
 
+api_method_id_submethod:
+    path: /api/{method}/{id}/{submethod}
+    controller: App\Controller\ApiController::get
+    methods: [GET, OPTION]
+
 index:
     path: /
     controller: App\Controller\IndexController::index
