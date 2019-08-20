@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "automattic/woocommerce": "^3.0",
+        "symfony/apache-pack": "^1.0",
         "symfony/browser-kit": "4.3.*",
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.1",
